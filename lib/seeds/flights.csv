@@ -1,11 +1,11 @@
-From,FromName,To,ToName,StartTime
-SFO ,San Francisco,JFK ,New York,360
-JFK ,New York,SFO ,San Francisco,303
-SFO ,San Francisco,JFK ,New York,330
-JFK ,New York,SFO ,San Francisco,370
-SFO ,San Francisco,JFK ,New York,390
-JFK ,New York,SFO ,San Francisco,345
-SFO ,San Francisco,JFK ,New York,350
-JFK ,New York,SFO ,San Francisco,380
-SFO ,San Francisco,JFK ,New York,330
-JFK ,New York,SFO ,San Francisco,368
+From,FromName,To,ToName,Duration
+SFO,San Francisco,JFK ,New York,360
+JFK,New York,SFO ,San Francisco,303
+SFO,San Francisco,JFK ,New York,330
+JFK,New York,SFO ,San Francisco,370
+SFO,San Francisco,JFK ,New York,390
+JFK,New York,SFO ,San Francisco,345
+SFO,San Francisco,JFK ,New York,350
+JFK,New York,SFO ,San Francisco,380
+SFO,San Francisco,JFK ,New York,330
+JFK,New York,SFO ,San Francisco,368

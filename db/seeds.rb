@@ -5,11 +5,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
 Airport.delete_all
+Flight.delete_all
+
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
+
 require "csv"
 
-csv_text = File.read(Rails.root.join("lib", "seeds", "airports.csv"))
+@sfo = Airport.create(name: "San Francisco – SFO")
+@jfk = Airport.create(name: "New York – JFK")
+
+csv_text = File.read(Rails.root.join("lib", "seeds", "flights.csv"))
 csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1")
 csv.each do |row|
-  a = Airport.create(name: row["Name"]+" – "+row["Code"])
+  st = [5,10,15,20,25,30].sample.days.since(Time.current)
+  if row["From"] == "SFO"
+      Flight.create(from_airport: @sfo, to_airport: @jfk, start_time: st, duration: row["Duration"])
+  else
+      Flight.create(from_airport: @jfk, to_airport: @sfo, start_time: st, duration: row["Duration"])
+  end
 end
+
+
