@@ -1,24 +1,4 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>From airport:</strong>
-  <%= @flight.from_airport %>
-</p>
-
-<p>
-  <strong>To airport:</strong>
-  <%= @flight.to_airport %>
-</p>
-
-<p>
-  <strong>Start time:</strong>
-  <%= @flight.start_time %>
-</p>
-
-<p>
-  <strong>Duration:</strong>
-  <%= @flight.duration %>
-</p>
-
 <%= link_to 'Edit', edit_flight_path(@flight) %> |
 <%= link_to 'Back', flights_path %>

@@ -33,6 +33,18 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#Simple Form
+gem "simple_form", "~> 5.0", ">= 5.0.3"
+
+#Date Picker
+gem "simple-form-datepicker", "~> 0.1.3"
+
+#Jquery
+gem "jquery-ui-rails", "~> 6.0", ">= 6.0.1" 
+
+#Bulma
+gem "bulma-rails", "~> 0.9.1"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

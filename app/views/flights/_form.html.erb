@@ -1,37 +1,12 @@
-<%= form_with(model: flight, local: true) do |form| %>
-  <% if flight.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(flight.errors.count, "error") %> prohibited this flight from being saved:</h2>
 
-      <ul>
-      <% flight.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for(@flight) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="field">
-    <%= form.label :from_airport %>
-    <%= form.text_field :from_airport %>
+  <div class="form-inputs">
   </div>
 
-  <div class="field">
-    <%= form.label :to_airport %>
-    <%= form.text_field :to_airport %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time %>
-  </div>
-
-  <div class="field">
-    <%= form.label :duration %>
-    <%= form.number_field :duration %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>
