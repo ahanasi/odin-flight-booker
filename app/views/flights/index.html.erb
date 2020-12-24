@@ -6,12 +6,12 @@
 
   <div class="form-inputs">
 
-    <%= f.input :from_airport, label: "From: ", wrapper: false do %>
-      <%= f.select :from_airport, @airport_options, class: "form-control", wrapper: false %>
+    <%= f.input :from_airport_id, label: "From: ", wrapper: false do %>
+      <%= f.select :from_airport_id, @airport_options, class: "form-control", wrapper: false %>
     <% end %>
 
-    <%= f.input :to_airport, label: "To: " do %>
-      <%= f.select :to_airport, @airport_options, class: "form-control" %>
+    <%= f.input :to_airport_id, label: "To: " do %>
+      <%= f.select :to_airport_id, @airport_options, class: "form-control" %>
     <% end %>
 
     <%= f.input :num_tickets, label: "No. of Passengers: ", wrapper: false do %>
@@ -24,10 +24,16 @@
 
   </div>
 
-  <%= f.submit "Search", class: "btn btn-primary" %>
+  <%= f.submit "Search" %>
   
 <% end %>
 
 <br>
 
-<%= link_to "New Flight", new_flight_path %>
+<div> 
+  <% @flights.each do |flt| %>
+    <%= flt.from_airport.name %>, <%= flt.to_airport.name %>, <%= flt.start_time %>
+    <hr>
+  <% end %>
+</div>
+

@@ -5,61 +5,15 @@ class FlightsController < ApplicationController
   # GET /flights.json
   def index
     @airport_options = Airport.all.map { |a| [a.name, a.id] }
-    @flights = Flight.all
     @date_options = Flight.pluck(:start_time).map { |f| [f.to_date.to_formatted_s(:rfc822), f.to_date] }.uniq
+    @flights = Flight.search(params[:search])
   end
 
-  # GET /flights/1
-  # GET /flights/1.json
-  def show
-  end
-
-  # GET /flights/new
-  def new
-    @flight = Flight.new
-  end
-
-  # GET /flights/1/edit
-  def edit
-  end
-
-  # POST /flights
-  # POST /flights.json
-  def create
-    @flight = Flight.new(flight_params)
-
-    respond_to do |format|
-      if @flight.save
-        format.html { redirect_to @flight, notice: "Flight was successfully created." }
-        format.json { render :show, status: :created, location: @flight }
-      else
-        format.html { render :new }
-        format.json { render json: @flight.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /flights/1
-  # PATCH/PUT /flights/1.json
-  def update
-    respond_to do |format|
-      if @flight.update(flight_params)
-        format.html { redirect_to @flight, notice: "Flight was successfully updated." }
-        format.json { render :show, status: :ok, location: @flight }
-      else
-        format.html { render :edit }
-        format.json { render json: @flight.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /flights/1
-  # DELETE /flights/1.json
-  def destroy
-    @flight.destroy
-    respond_to do |format|
-      format.html { redirect_to flights_url, notice: "Flight was successfully destroyed." }
-      format.json { head :no_content }
+  def self.search(search)
+    if search
+      @flights = Flight.where(["from_airport_id = ? and to_airport_id = ? and DATE(start_time) = ?", search[:from_airport_id], search[:to_airport_id], search[:start_times]])
+    else
+      @flights = Flight.all
     end
   end
 
