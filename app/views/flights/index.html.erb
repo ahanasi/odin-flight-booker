@@ -1,4 +1,25 @@
-<p id="notice"><%= notice %></p>
+<% if flash[:notice] %>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="subtitle" id="notice">
+          <%= notice %>
+        </h2>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+      <%= image_tag("brand.png", class: "img-responsive navbar-item", id: "navbar-logo", width: "200") %>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
 
 <h1>Flights</h1>
 
