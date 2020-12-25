@@ -36,8 +36,11 @@ gem 'jbuilder', '~> 2.5'
 #Simple Form
 gem "simple_form", "~> 5.0", ">= 5.0.3"
 
-#Date Picker
-gem "simple-form-datepicker", "~> 0.1.3"
+#Font-Awesome
+gem 'font-awesome-sass', '~> 5.15.1'
+
+#Pry
+gem 'pry', '~> 0.13.1'
 
 #Jquery
 gem "jquery-ui-rails", "~> 6.0", ">= 6.0.1" 

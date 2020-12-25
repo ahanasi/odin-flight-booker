@@ -1,12 +1,63 @@
 
-<%= simple_form_for(@flight) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<%= simple_form_for :flight, url: root_path, method: "GET", local: true do |f| %>
 
-  <div class="form-inputs">
-  </div>
+  <% if f.error_notification %>
+    <div class="notification is-warning">
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    </div>
+  <% end %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <div class="field is-horizontal">
+    <div class="field-body is-justify-content-space-evenly">
+      <div class="control">
+        <div class="select">
+          <%= f.input :from_airport_id, as: :select, 
+          collection: @airport_options, label: false,
+          wrapper: false, prompt: "From..." %>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="select">
+          <%= f.input :to_airport_id, as: :select, 
+          collection: @airport_options, label: false, 
+          wrapper: false, prompt: "To..." %>
+        </div>
+      </div>
+
+      
+      <div class="control">
+        <i class="fas fa-user mt-3 mr-1 has-text-grey-light"></i>
+        <div class="select">
+          <%= f.input :num_tickets, as: :select, 
+          collection: 1..4, label: false, 
+          wrapper: false, include_blank: false %>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="select">
+          <% if @flight.start_time %>
+            <select name="flight[start_time]" id="flight_start_time">
+              <% @date_options.each do |date| %>
+                <% if date[1] == @flight.start_time.to_s %>
+                  <option value="<%= date[1] %>" selected ><%= date[0] %></option>
+                <% else %>
+                  <option value="<%= date[1] %>" ><%= date[0] %></option>
+                <% end %>
+              <% end %>
+            </select>
+          <% else %>
+            <%= select(:flight, :start_time, options_for_select(@date_options)) %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="control">
+        <%= f.submit "Search", class: "button is-link" %>
+      </div>
+    </div>
+  </div>        
+  
 <% end %>

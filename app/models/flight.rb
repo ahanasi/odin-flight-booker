@@ -1,14 +1,21 @@
+require "pry"
 class Flight < ApplicationRecord
   belongs_to :from_airport, class_name: "Airport", foreign_key: "from_airport_id"
   belongs_to :to_airport, class_name: "Airport", foreign_key: "to_airport_id"
 
+  attr_accessor :num_tickets
+  
 
   def self.search(search)
     if search
-      @flights = Flight.where(["from_airport_id = ? and to_airport_id = ? and DATE(start_time) = ?", search[:from_airport_id], search[:to_airport_id], search[:start_time]])
-    else
-      @flights = Flight.all
+      flights = Flight.where(["DATE(start_time) = ?", search[:start_time]])
+      flights = flights.where("from_airport_id = ?", search[:from_airport_id]) if search[:from_airport_id].present?
+      flights = flights.where("to_airport_id = ?", search[:to_airport_id]) if search[:to_airport_id].present?   
+      return flights
     end
   end
 
+  def format_date
+    start_time.to_date.to_formatted_s(:rfc822)
+  end
 end
