@@ -10,22 +10,9 @@
   </section>
 <% end %>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <%= link_to root_path, class: 'navbar-item' do %>
-      <%= image_tag("brand.png", class: "img-responsive", id: "navbar-logo", width: "150") %>
-    <% end %>
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-</nav>
-
 <section class="section">
   <div class="container has-text-centered	">
-    <h1 class="title">Flights</h1>
+    <%= image_tag("brand.png", class: "img-responsive", width: "300") %>
     <h2 class="subtitle">
       Book A Ticket & Just Leave.
     </h2>
@@ -34,7 +21,7 @@
 
 <section class="section columns is-centered">
   <div class="box column is-two-thirds">
-    <%= render "form" %>
+    <%= render "search_form" %>
   </div>
 </section>
 
