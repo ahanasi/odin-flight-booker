@@ -21,8 +21,10 @@ require "csv"
 
 csv_text = File.read(Rails.root.join("lib", "seeds", "flights.csv"))
 csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1")
+days = (10..25).step(5).to_a
 csv.each do |row|
-  st = Time.zone.at(rand(Time.current..60.day.from_now))
+  d = days.sample
+  st = Time.zone.at(rand(Time.current...d.day.from_now))
   if row["From"] == "SFO"
       Flight.create(from_airport: @sfo, to_airport: @jfk, start_time: st, duration: row["Duration"])
   else

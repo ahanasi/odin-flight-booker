@@ -1,0 +1,27 @@
+<% unless @flights.nil? %>
+  <% if !@flights.empty? %>
+    <table class="table is-fullwidth mb-0 has-background-info-light">
+      <tbody>
+        <% @flights.each do |flt| %>
+          <tr class="has-text-centered"> 
+            <td class="is-size-6">
+              <%= flt.from_airport.apt_code %> – <%= flt.to_airport.apt_code %>
+            </td>
+            <td class="is-size-6">
+              <%= flt.local_time(flt.start_time) %> – <%= flt.local_time(flt.end_time) %>
+              <% if flt.start_time.localtime.to_date != flt.end_time.localtime.to_date %>
+                <sup class="is-size-7">+1</sup>
+              <% end %>
+            </td>
+            <td class="is-size-6">
+              <%= flt.formatted_duration %>
+            </td>
+          </tr>            
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="subtitle is-4 mb-0">No flights found!</div>
+  <% end %>
+  <%= hidden_field_tag :num_tickets, params[:flight][:num_tickets]%>
+<% end %>

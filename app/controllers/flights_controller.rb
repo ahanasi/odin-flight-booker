@@ -5,7 +5,7 @@ class FlightsController < ApplicationController
   # GET /flights.json
   def index
     @airport_options = Airport.all.map { |a| [a.name, a.id] }
-    @date_options = Flight.order(start_time: :asc).map { |f| [f.start_time.to_date.to_formatted_s(:rfc822), f.start_time.to_s] }.uniq
+    @date_options = Flight.order(start_time: :asc).map { |f| [f.start_time.to_date.to_formatted_s(:rfc822), f.start_time.to_s] }.uniq{ |d| d[0]}
     if params[:flight]
       @flight = Flight.new(flight_params)
       flight_params.reject!{|_, v| v.blank?}

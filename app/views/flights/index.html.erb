@@ -25,22 +25,8 @@
   </div>
 </section>
 
-
-<br>
-
-
-<div> 
-  <% unless @flights.nil? %>
-    <% if !@flights.empty? %>
-      <% @flights.each do |flt| %>
-      <%= flt.from_airport.name %>, <%= flt.to_airport.name %>, <%= flt.start_time %>
-      <hr>
-      <% end %>
-    <% else %>
-      No flights found!
-    <% end %>
-    <%= hidden_field_tag :num_tickets, params[:flight][:num_tickets]%>
-  <% end %>
-</div>
-
-
+<section class="section columns is-centered is-vcentered">
+  <div class="container column columns is-centered is-vcentered is-two-thirds">
+    <%= render "search_results" %>
+  </div>
+</section>

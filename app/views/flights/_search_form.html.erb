@@ -14,7 +14,7 @@
         <div class="select">
           <%= f.input :from_airport_id, as: :select, 
           collection: @airport_options, label: false,
-          wrapper: false, prompt: "From..." %>
+          wrapper: false, include_blank: "From..." %>
         </div>
       </div>
 
@@ -22,7 +22,7 @@
         <div class="select">
           <%= f.input :to_airport_id, as: :select, 
           collection: @airport_options, label: false, 
-          wrapper: false, prompt: "To..." %>
+          wrapper: false, include_blank: "To..." %>
         </div>
       </div>
 
@@ -49,7 +49,7 @@
               <% end %>
             </select>
           <% else %>
-            <%= select(:flight, :start_time, options_for_select(@date_options)) %>
+            <%= f.select :start_time, collection: @date_options%>
           <% end %>
         </div>
       </div>

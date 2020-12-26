@@ -18,4 +18,19 @@ class Flight < ApplicationRecord
   def format_date
     start_time.to_date.to_formatted_s(:rfc822)
   end
+ 
+  def local_time(time_input)
+    time_input.localtime.strftime("%I:%M %p")
+  end
+
+  def end_time
+    start_time + duration.minutes
+  end
+
+  def formatted_duration
+    hours = duration / 60
+    rest = duration % 60
+    (rest != 0) ? "#{hours} hr #{rest} min" : "#{hours} hr"
+  end
+
 end
