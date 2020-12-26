@@ -11,7 +11,7 @@ class Flight < ApplicationRecord
       flights = Flight.where(["DATE(start_time) = ?", search[:start_time]])
       flights = flights.where("from_airport_id = ?", search[:from_airport_id]) if search[:from_airport_id].present?
       flights = flights.where("to_airport_id = ?", search[:to_airport_id]) if search[:to_airport_id].present?   
-      return flights
+      return flights.order(start_time: :asc)
     end
   end
 
@@ -20,7 +20,7 @@ class Flight < ApplicationRecord
   end
  
   def local_time(time_input)
-    time_input.localtime.strftime("%I:%M %p")
+    time_input.strftime("%I:%M %p")
   end
 
   def end_time
