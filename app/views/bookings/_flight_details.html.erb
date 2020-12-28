@@ -1,0 +1,25 @@
+<nav class="level">
+  <div class="level-item has-text-centered">
+    <div>
+      <%= image_tag("brand.png", class: "img-responsive mb-2", width: "140") %>
+      <p class="heading is-size-6 is-family-secondary">One Way</p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="title is-size-5 is-family-secondary"><%= @booking.flight.from_airport.apt_code %> ▸ <%= @booking.flight.to_airport.apt_code %></p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="title is-size-5 is-family-secondary"><%= @booking.flight.format_date %></p>
+      <p class="heading is-size-6 is-family-secondary"><%= @booking.flight.format_time(@booking.flight.start_time) %> - <%= @booking.flight.format_time(@booking.flight.end_time) %></p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="title is-size-5 is-family-secondary">Nonstop</p>
+      <p class="heading is-size-6 is-family-secondary"><%= @booking.flight.formatted_duration %></p>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,18 @@
+<% unless notice.nil? %>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="subtitle" id="notice">
+          <%= notice %>
+        </h2>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+
+<section class="section columns is-centered is-mobile">
+  <div class="box column is-two-thirds">
+    <%= render "flight_details" %>
+  </div>
+</section>

@@ -2,6 +2,8 @@ require "pry"
 class Flight < ApplicationRecord
   belongs_to :from_airport, class_name: "Airport", foreign_key: "from_airport_id"
   belongs_to :to_airport, class_name: "Airport", foreign_key: "to_airport_id"
+  has_many :bookings
+  has_many :passengers, through: :bookings
 
   attr_accessor :num_tickets
   
@@ -19,7 +21,7 @@ class Flight < ApplicationRecord
     start_time.to_date.to_formatted_s(:rfc822)
   end
  
-  def local_time(time_input)
+  def format_time(time_input)
     time_input.strftime("%I:%M %p")
   end
 

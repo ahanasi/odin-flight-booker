@@ -1,6 +1,6 @@
 <% unless @flights.nil? %>
   <% if !@flights.empty? %>
-    <%= simple_form_for :flight, url: root_path, method: "GET", local: true do |f| %>
+    <%= simple_form_for :booking, url: new_booking_path, method: "GET", local: true do |f| %>
       <table class="table is-fullwidth has-background-info-light">
         <tbody>
           <% @flights.each do |flt| %>
@@ -9,7 +9,7 @@
                 <%= flt.from_airport.apt_code %> – <%= flt.to_airport.apt_code %>
               </td>
               <td class="is-size-5">
-                <%= flt.local_time(flt.start_time) %> – <%= flt.local_time(flt.end_time) %>
+                <%= flt.format_time(flt.start_time) %> – <%= flt.format_time(flt.end_time) %>
                 <% if flt.start_time.to_date != flt.end_time.to_date %>
                   <sup class="is-size-7">+1</sup>
                 <% end %>
@@ -19,7 +19,7 @@
               </td>
               <td class="is-size-5">
                 <div class="radio">
-                  <%= f.radio_button :id, flt.id %>
+                  <%= f.radio_button :flight_id, flt.id %>
                 </div>
               </td>
             </tr>            
