@@ -48,6 +48,9 @@ gem "jquery-ui-rails", "~> 6.0", ">= 6.0.1"
 #Bulma
 gem "bulma-rails", "~> 0.9.1"
 
+#Nokogiri
+gem 'nokogiri', '~> 1.10', '>= 1.10.10'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

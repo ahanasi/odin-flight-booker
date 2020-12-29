@@ -14,7 +14,7 @@
         <div class="select">
           <%= f.input :from_airport_id, as: :select, 
           collection: @airport_options, label: false,
-          wrapper: false, include_blank: "From..." %>
+          wrapper: false, include_blank: "From...", required: false %>
         </div>
       </div>
 
@@ -22,7 +22,7 @@
         <div class="select">
           <%= f.input :to_airport_id, as: :select, 
           collection: @airport_options, label: false, 
-          wrapper: false, include_blank: "To..." %>
+          wrapper: false, include_blank: "To...", required: false %>
         </div>
       </div>
 

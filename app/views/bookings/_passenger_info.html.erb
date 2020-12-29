@@ -1,0 +1,50 @@
+<h2 class="heading is-family-secondary is-size-4 mb-5 has-text-info">Passenger Info</h2>
+<%= form_with(model: @booking, local: true) do |f| %>
+  <%= f.hidden_field :flight_id, value:  params[:booking][:flight_id] %>
+  <% i = 1 %>
+  <%= f.fields_for :passengers do |pass_form| %>
+    <% if @booking.errors.any? %>
+      <article class="message is-danger">
+        <div class="message-body">
+          Please fill in the required fields:
+        </div>
+      </article>
+    <% end %>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label"><%= i %></label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control is-expanded has-icons-left">
+            <%= pass_form.text_field :name, label: false, placeholder: "Name", class: "input", error_html: "is-danger" %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control is-expanded has-icons-left has-icons-right">
+            <%= pass_form.text_field :email, label: false, placeholder: "Email", class: "input" %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% i += 1 %>
+  <% end %>
+  <div class="field is-horizontal">
+    <div class="field-label">
+      <!-- Left empty for spacing -->
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <%= f.submit "Complete Purchase", class: "button is-info" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
