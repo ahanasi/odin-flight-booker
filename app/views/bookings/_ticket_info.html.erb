@@ -1,0 +1,62 @@
+<div class="container column is-two-thirds">
+      <h1 class="subtitle has-text-centered  is-size-4">Your flight for <strong class="  "><%= @booking.formatted_date %></strong> has been confirmed!</h1>
+      <div class="card">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <%= image_tag("flight_logo.png", class: "img-responsive", width: "200") %>
+              </figure>
+            </div>
+            <div class="media-content mb-5">
+              <p class="title is-4 has-text-info-dark">OdinFlights</p>
+              <p class="subtitle is-6 mb-1 has-text-info-dark">OD <%= @booking.random_flight %></p>
+              <p class="is-7 has-text-weight-light has-text-info-dark">Economy</p>
+            </div>
+            <div class="media-right">
+              <ul>
+                <% @booking.passengers.each do |passenger| %>
+                  <li><%= passenger.name %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <div class="content">
+            <nav class="level">
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="title is-4"><%= @booking.flight.from_airport.city %></p>
+                  <p class="subtitle is-5"><%= @booking.flight.format_time(@booking.flight.start_time) %></p>
+                  <p class="subtitle is-5 mb-5"><%= @booking.flight.from_airport.apt_code %></p>
+                  <p class="title is-5"><%= @booking.start_day %></p>
+                </div>
+              </div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="title">––––––</p>
+                </div>
+              </div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="title is-4"><%= @booking.flight.formatted_duration %></p>
+                  <p class="subtitle is-5 has-text-weight-light">Nonstop</p>
+                </div>
+              </div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="title">–––– <i class="icon fas fa-plane pt-3"></i></p>
+                </div>
+              </div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="title is-4"><%= @booking.flight.to_airport.city %></p>
+                  <p class="subtitle is-5"><%= @booking.flight.format_time(@booking.flight.end_time) %></p>
+                  <p class="subtitle is-5 mb-5"><%= @booking.flight.to_airport.apt_code %></p>
+                  <p class="title is-5"><%= @booking.end_day %></p>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+  </div>

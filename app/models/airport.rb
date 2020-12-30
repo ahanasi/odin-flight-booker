@@ -8,3 +8,7 @@ public
 def apt_code
   name.split(" ")[-1]
 end
+
+def city
+  name.split("–")[0].rstrip
+end

@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
       @booking = Booking.new(booking_params)
       if @booking.save
         flash[:success] = "Event successfully created!"
-        redirect_to root_path
+        redirect_to @booking
       else
         flash.now[:error] = "Your form could not be submitted. Please try again."
         render "new"

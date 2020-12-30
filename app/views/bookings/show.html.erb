@@ -1,0 +1,22 @@
+<section class="section">
+  <nav class="level">
+    <div class="level-left">
+      <div class="level-item">
+        <div>
+          <h1 class="title has-text-info-dark">Trip Confirmation</h1>
+        </div>
+      </div>
+    </div>
+    <div class="level-right">
+      <div class="level-item">
+        <%= image_tag("brand.png", class: "img-responsive", width: "200") %>
+      </div>
+    </div>
+  </nav>
+</section>
+<section class="section columns is-mobile">
+  <%= render "ticket_info" %>
+</section>
+<section class="section has-text-centered">
+  <%= button_to "Book another flight →", root_path, :method => "get", class: "button is-info" %>
+</section>
