@@ -36,6 +36,9 @@ gem 'jbuilder', '~> 2.5'
 #Simple Form
 gem "simple_form", "~> 5.0", ">= 5.0.3"
 
+#Sendgrid
+gem 'sendgrid-ruby'
+
 #Letter-opener
 gem "letter_opener", :group => :development
 
