@@ -36,6 +36,9 @@ gem 'jbuilder', '~> 2.5'
 #Simple Form
 gem "simple_form", "~> 5.0", ">= 5.0.3"
 
+#Letter-opener
+gem "letter_opener", :group => :development
+
 #Font-Awesome
 gem 'font-awesome-sass', '~> 5.15.1'
 

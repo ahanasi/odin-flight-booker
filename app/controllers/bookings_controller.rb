@@ -11,6 +11,9 @@ class BookingsController < ApplicationController
       if @booking.save
         flash[:success] = "Event successfully created!"
         redirect_to @booking
+        @booking.passengers.each do |passenger|
+          PassengerMailer.with(passenger: passenger, id: @booking.id).thank_you_email.deliver_later
+        end
       else
         flash.now[:error] = "Your form could not be submitted. Please try again."
         render "new"
