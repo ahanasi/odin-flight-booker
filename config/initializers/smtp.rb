@@ -1,6 +1,6 @@
 #if you are using the API key
 ActionMailer::Base.smtp_settings = {
-  :user_name => 'apikey',
+  :user_name => 'ODINFLIGHTS',
   :password => ENV['SENDGRID_API_KEY'],
   :domain => 'odin-flights.herokuapp.com',
   :address => 'smtp.sendgrid.net',
